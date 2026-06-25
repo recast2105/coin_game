@@ -1,8 +1,8 @@
 package game
 
 // Customized Game Package
+import "../scripts/player"
 import "../system"
-
 // -------- Default Package Odin --------
 import console "core:fmt"
 import "vendor:raylib"
@@ -16,6 +16,7 @@ window_config: system.config = {
 // -------- Initialization --------
 start :: proc() {
 	raylib.InitWindow(window_config.width, window_config.height, window_config.window_name)
+	player.print()
 }
 
 // -------- Game Logic --------
