@@ -6,7 +6,7 @@ import "vendor:raylib"
 
 IMAGE_FILE_PATH :: "atlas.png"
 
-MAX_SPEED :: 2
+MAX_SPEED :: 8
 MIN_SPEED :: 1
 
 @(private)
@@ -29,6 +29,8 @@ load_player_image :: proc() {
 		cast(f32)player_entity.sprite.width / 3,
 		cast(f32)player_entity.sprite.height / 2.5,
 	}
+
+	console.println("Struct Size player: ", size_of(player_entity), "Bytes")
 }
 
 animation_texture :: proc() {
@@ -38,11 +40,11 @@ animation_texture :: proc() {
 		frame_counter = 0
 
 		current_frame += 1
-		if (current_frame > 5) {
+		if (current_frame > 3) {
 			current_frame = 0
 		}
 
-		frame_rectangle.y = cast(f32)current_frame * (cast(f32)player_entity.sprite.height / 2)
+		frame_rectangle.y = cast(f32)current_frame * (cast(f32)player_entity.sprite.height / 3)
 	}
 
 	if raylib.IsKeyPressed(raylib.KeyboardKey.RIGHT) {
@@ -77,11 +79,22 @@ unload_texture :: proc() {
 
 movement :: proc() {
 	if raylib.IsKeyDown(raylib.KeyboardKey.RIGHT) {
-		player_entity.translate.position += 1
-		console.println("Moving!")
+		player_entity.translate.position.x += 1
+		// console.println("Moving!")
 	}
+
 	if raylib.IsKeyDown(raylib.KeyboardKey.LEFT) {
-		player_entity.translate.position -= 1
-		console.println("Moving!")
+		player_entity.translate.position.x -= 1
+		// console.println("Moving!")
+	}
+
+	if raylib.IsKeyDown(raylib.KeyboardKey.UP) {
+		player_entity.translate.position.y -= 1
+		// console.println("Moving!")
+	}
+
+	if raylib.IsKeyDown(raylib.KeyboardKey.DOWN) {
+		player_entity.translate.position.y += 1
+		// console.println("Moving!")
 	}
 }

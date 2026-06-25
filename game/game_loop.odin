@@ -24,6 +24,7 @@ update :: proc() {
 
 		player.animation_texture()
 		player.movement()
+
 		raylib.BeginDrawing()
 		raylib.ClearBackground(raylib.WHITE)
 
