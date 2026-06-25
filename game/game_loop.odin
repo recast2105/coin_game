@@ -1,10 +1,8 @@
 package game
 
-// Customized Game Package
 import "../scripts/player"
 import "../system"
-// -------- Default Package Odin --------
-import console "core:fmt"
+
 import "vendor:raylib"
 
 window_config := system.Config {
@@ -13,21 +11,21 @@ window_config := system.Config {
 	window_name = "Collect Coin Game",
 }
 
-// -------- Initialization --------
 start :: proc() {
 	raylib.InitWindow(window_config.width, window_config.height, window_config.window_name)
+
+	raylib.SetTargetFPS(60)
+
 	player.load_player_image()
 }
 
-// -------- Game Logic --------
 update :: proc() {
-	defer console.println("Operation closed")
-
-
 	for !raylib.WindowShouldClose() {
 
+		player.animation_texture()
+		player.movement()
 		raylib.BeginDrawing()
-		raylib.ClearBackground(raylib.RAYWHITE)
+		raylib.ClearBackground(raylib.WHITE)
 
 		player.draw_texture()
 
@@ -35,4 +33,5 @@ update :: proc() {
 	}
 
 	player.unload_texture()
+	raylib.CloseWindow()
 }
