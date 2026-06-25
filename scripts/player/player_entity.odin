@@ -6,7 +6,7 @@ import "vendor:raylib"
 
 IMAGE_FILE_PATH :: "atlas.png"
 
-MAX_SPEED :: 8
+MAX_SPEED :: 6.5
 MIN_SPEED :: 1
 
 @(private)
@@ -27,7 +27,7 @@ load_player_image :: proc() {
 		0,
 		0,
 		cast(f32)player_entity.sprite.width / 3,
-		cast(f32)player_entity.sprite.height / 2.5,
+		cast(f32)player_entity.sprite.height / 3,
 	}
 
 	console.println("Struct Size player: ", size_of(player_entity), "Bytes")
@@ -45,14 +45,6 @@ animation_texture :: proc() {
 		}
 
 		frame_rectangle.y = cast(f32)current_frame * (cast(f32)player_entity.sprite.height / 3)
-	}
-
-	if raylib.IsKeyPressed(raylib.KeyboardKey.RIGHT) {
-		frame_speed += 1
-	}
-
-	if raylib.IsKeyPressed(raylib.KeyboardKey.LEFT) {
-		frame_speed -= 1
 	}
 
 	if frame_speed > MAX_SPEED {
