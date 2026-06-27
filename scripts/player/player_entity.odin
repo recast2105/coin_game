@@ -75,7 +75,7 @@ unload_texture :: proc() {
 }
 
 hit_box_player :: proc() {
-
+	
 }
 
 movement :: proc() {

@@ -4,6 +4,7 @@ import "./game"
 
 game_core :: game
 
+// TODO: "colocar coin no mapa"
 // -------- Execution of Game core system --------
 main :: proc() {
 
