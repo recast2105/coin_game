@@ -5,6 +5,7 @@ import "../system"
 
 import "vendor:raylib"
 
+@(private)
 window_config := system.Config {
 	width       = 800,
 	height      = 600,
@@ -20,19 +21,23 @@ start :: proc() {
 }
 
 update :: proc() {
+	defer raylib.CloseWindow()
+
 	for !raylib.WindowShouldClose() {
-
-		player.animation_texture()
 		player.movement()
-
-		raylib.BeginDrawing()
-		raylib.ClearBackground(raylib.WHITE)
-
-		player.draw_texture()
-
-		raylib.EndDrawing()
+		draw()
 	}
 
 	player.unload_texture()
-	raylib.CloseWindow()
+}
+
+draw :: proc() {
+	player.animation_texture()
+
+	raylib.BeginDrawing()
+	raylib.ClearBackground(raylib.WHITE)
+
+	player.draw_texture()
+
+	raylib.EndDrawing()
 }

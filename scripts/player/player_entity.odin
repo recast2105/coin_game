@@ -4,19 +4,24 @@ import "../../entities"
 import console "core:fmt"
 import "vendor:raylib"
 
+@(private)
 IMAGE_FILE_PATH :: "atlas.png"
 
+@(private)
 MAX_SPEED :: 6.5
+@(private)
 MIN_SPEED :: 1
 
 @(private)
 player_entity: entities.Entity_2D
-
-
+@(private)
 frame_rectangle: raylib.Rectangle
 
+@(private)
 frame_counter: f32 = 0
+@(private)
 frame_speed: f32 = 8
+@(private)
 current_frame: int = 0
 
 load_player_image :: proc() {
@@ -69,6 +74,10 @@ unload_texture :: proc() {
 	raylib.UnloadTexture(player_entity.sprite)
 }
 
+hit_box_player :: proc() {
+
+}
+
 movement :: proc() {
 	if raylib.IsKeyDown(raylib.KeyboardKey.RIGHT) {
 		player_entity.translate.position.x += 1
@@ -89,4 +98,5 @@ movement :: proc() {
 		player_entity.translate.position.y += 1
 		// console.println("Moving!")
 	}
+
 }
