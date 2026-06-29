@@ -1,7 +1,7 @@
 package player
 
 import "../../entities"
-import console "core:fmt"
+// import console "core:fmt"
 import "vendor:raylib"
 
 @(private)
@@ -34,8 +34,6 @@ load_player_image :: proc() {
 		cast(f32)player_entity.sprite.width / 3,
 		cast(f32)player_entity.sprite.height / 3,
 	}
-
-	console.println("Struct Size player: ", size_of(player_entity), "Bytes")
 }
 
 animation_texture :: proc() {
@@ -75,7 +73,7 @@ unload_texture :: proc() {
 }
 
 hit_box_player :: proc() {
-	
+
 }
 
 movement :: proc() {

@@ -1,5 +1,6 @@
 package game
 
+import "../scripts/coin"
 import "../scripts/player"
 import "../system"
 
@@ -17,6 +18,7 @@ start :: proc() {
 
 	raylib.SetTargetFPS(60)
 
+	coin.load_coin_image()
 	player.load_player_image()
 }
 
@@ -28,16 +30,20 @@ update :: proc() {
 		draw()
 	}
 
-	player.unload_texture()
+	defer coin.unload_texture()
+	defer player.unload_texture()
 }
 
 draw :: proc() {
+
+
 	player.animation_texture()
 
 	raylib.BeginDrawing()
-	raylib.ClearBackground(raylib.WHITE)
+	raylib.ClearBackground(raylib.BLACK)
 
 	player.draw_texture()
+	coin.draw_texture()
 
 	raylib.EndDrawing()
 }
