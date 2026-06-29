@@ -30,17 +30,16 @@ update :: proc() {
 		draw()
 	}
 
-	defer coin.unload_texture()
 	defer player.unload_texture()
+	defer coin.unload_texture()
 }
 
 draw :: proc() {
 
-
 	player.animation_texture()
-
+	coin.animation_texture()
 	raylib.BeginDrawing()
-	raylib.ClearBackground(raylib.BLACK)
+	raylib.ClearBackground(raylib.WHITE)
 
 	player.draw_texture()
 	coin.draw_texture()

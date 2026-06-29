@@ -1,2 +1,2 @@
 run:
-	@odin run . -vet -strict-style
+	@odin run . 
